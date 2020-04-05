@@ -1,0 +1,2 @@
+pyreverse OOP.py --filter-mode=ALL
+dot -Tpng -Gdpi=300 classes.dot -o uml.png

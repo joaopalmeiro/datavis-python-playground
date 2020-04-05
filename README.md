@@ -9,3 +9,4 @@ Some Data Visualization experiments with Python.
 - [Folium + Portugal + COVID-19 data demo](folium-portugal-covid19-demo).
 - [Manifold demo](manifold-demo).
 - [Marching Squares demo](marching-squares-demo).
+- [Style a UML class diagram generated with Pyreverse](uml-class-diagram-pyreverse).

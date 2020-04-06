@@ -13,3 +13,11 @@ class Dog:
 
     def birthday(self) -> None:
         self.age += 1
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.name}, {self.age})\nat {hex(id(self))}"
+
+
+dog = Dog("Canis", 5)
+
+print(dog)

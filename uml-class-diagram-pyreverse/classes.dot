@@ -1,5 +1,5 @@
 digraph "classes" {
 charset="utf-8"
 rankdir=BT
-"0" [fontname="Roboto-Regular", fontcolor="#2F2F2F", label="{Dog|age\lname\lspecies : str\l|__init__(name, age)\lbirthday()\ldescription()\lspeak(sound)\l}", shape="record"];
+"0" [color="#2F2F2F", fontname="Roboto-Regular", fontcolor="#2F2F2F", label="{Dog|age\lname\lspecies : str\l|__init__(name, age)\l__repr__()\lbirthday()\ldescription()\lspeak(sound)\l}", shape="record"];
 }

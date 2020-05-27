@@ -1,14 +1,14 @@
 # :notebook: Notes
 
-This folder contains a possible implementation, using [Altair](https://altair-viz.github.io/) and [pandas](https://pandas.pydata.org/), of the Width-Scale Bar Chart (Höhn et al., 2020), an alternative to the typical bar chart to visualize data with a wide value/bar height range.
+This folder contains a possible implementation, using [Altair](https://altair-viz.github.io/) and [pandas](https://pandas.pydata.org/), of the Width-Scale Bar Chart (Höhn et al., 2020), an alternative to the typical bar chart to visualize data with a wide value/bar height range:
+
+![Width-Scale Bar Chart](assets/wsb-chart.png)
 
 ## Quickstart
 
 - `pipenv install`
 - `pipenv shell`
 - `jupyter notebook`
-
-You can also check the rendered notebook [here](https://nbviewer.jupyter.org/github/joaopalmeiro/datavis-python-playground/blob/master/altair-width-scale-bar-chart/width-scale-bar-chart-hohn-et-al.ipynb).
 
 ## References
 

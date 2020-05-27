@@ -8,7 +8,7 @@ This folder contains a possible implementation, using [Altair](https://altair-vi
 - `pipenv shell`
 - `jupyter notebook`
 
-You can also check the rendered notebook [here](https://nbviewer.jupyter.org/github/joaopalmeiro/datavis-python-playground/blob/master/altair-width-scale-bar-chart/width-scale-bar-chart.ipynb).
+You can also check the rendered notebook [here](https://nbviewer.jupyter.org/github/joaopalmeiro/datavis-python-playground/blob/master/altair-width-scale-bar-chart/width-scale-bar-chart-hohn-et-al.ipynb).
 
 ## References
 

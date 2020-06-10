@@ -1,4 +1,5 @@
 import pandas as pd
+from typing import List
 
 HABITAT = {
     "g": "grasses",
@@ -15,7 +16,7 @@ CLASS = {"e": "edible", "p": "poisonous"}
 COLUMN_MAPS = {"class": CLASS, "habitat": HABITAT}
 
 
-def load_mushroom_dataset(cols=[]):
+def load_mushroom_dataset(cols: List[str] = []) -> pd.DataFrame:
     data = pd.read_csv("./raw_data/mushrooms.csv", usecols=cols if cols else None)
 
     for col in cols:
@@ -25,7 +26,7 @@ def load_mushroom_dataset(cols=[]):
     return data
 
 
-def get_marimekko_data(data, xvar, yvar):
+def get_marimekko_data(data: pd.DataFrame, xvar: str, yvar: str) -> pd.DataFrame:
     x_data = (
         data[xvar]
         .value_counts(normalize=True)

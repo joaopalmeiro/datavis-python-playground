@@ -1,4 +1,5 @@
 import altair as alt
+import pandas as pd
 
 ANTIQUE = [
     "#855C75",
@@ -16,7 +17,13 @@ ANTIQUE = [
 ]
 
 
-def count_bar_chart(data, xvar, w=300, h=300, bar_color=ANTIQUE[2]):
+def count_bar_chart(
+    data: pd.DataFrame,
+    xvar: str,
+    w: int = 300,
+    h: int = 300,
+    bar_color: str = ANTIQUE[2],
+) -> alt.Chart:
     return (
         alt.Chart(data, width=w, height=h)
         .mark_bar(color=bar_color)
@@ -28,7 +35,9 @@ def count_bar_chart(data, xvar, w=300, h=300, bar_color=ANTIQUE[2]):
     )
 
 
-def marimekko_chart(data, xvar, yvar, w=400, h=400):
+def marimekko_chart(
+    data: pd.DataFrame, xvar: str, yvar: str, w: int = 400, h: int = 400
+) -> alt.Chart:
     STROKE = 1
 
     selection = alt.selection_single(fields=[yvar], bind="legend")

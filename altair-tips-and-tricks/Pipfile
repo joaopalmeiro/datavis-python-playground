@@ -9,6 +9,7 @@ verify_ssl = true
 pandas = "*"
 jupyter = "*"
 altair = "*"
+vega-datasets = "*"
 
 [requires]
 python_version = "3.6"

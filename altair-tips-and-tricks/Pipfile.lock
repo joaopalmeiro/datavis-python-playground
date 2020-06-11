@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "533ba05e2a178ffb1324faee724ad1431aca4397e1e539258e33e14f610f15f3"
+            "sha256": "18fd644bf660673973e86e4c2c01f53921d8feb9c0465dd19a44b4b3ce03f2ab"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -29,7 +29,7 @@
                 "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
                 "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
             ],
-            "markers": "platform_system == 'Darwin'",
+            "markers": "sys_platform == 'darwin'",
             "version": "==0.1.0"
         },
         "attrs": {
@@ -468,6 +468,14 @@
                 "sha256:d023ee369ddd2763310e4c3eae1ff649689440d4ae59d7485eb4cfbbe3e359f7"
             ],
             "version": "==4.3.3"
+        },
+        "vega-datasets": {
+            "hashes": [
+                "sha256:db8883dab72b6f414e1fafdbf1e8db7543bba6ed77912a4e0c197d74fcfa1c20",
+                "sha256:ffc7debd6dcdccd57fb44b5efb4764c8a443673c2a83b58e2a4ee9f7faa35b85"
+            ],
+            "index": "pypi",
+            "version": "==0.8.0"
         },
         "wcwidth": {
             "hashes": [

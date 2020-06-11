@@ -7,6 +7,7 @@ Some Data Visualization experiments with Python.
 - [Altair + ipywidgets demo](altair-plus-ipywidgets-demo).
 - [Altair Marimekko Chart](altair-marimekko-chart).
 - [Altair ROC curve plot demo](altair-roc-curve-demo).
+- [Altair Tips & Tricks](altair-tips-and-tricks).
 - [Altair Width-Scale Bar Chart](altair-width-scale-bar-chart).
 - [Folium + Portugal + COVID-19 data demo](folium-portugal-covid19-demo).
 - [Manifold demo](manifold-demo).

@@ -12,3 +12,5 @@ star = Shape(
 )  # Based on: https://vega.github.io/vega/docs/marks/symbol/
 
 line_cross = Shape("Line Cross", "M 1 1 L -1 -1 M -1 1 L 1 -1")
+
+right_triangle = Shape("Right Triangle", "M 1 1 L -1 -1 L -1 1 Z")

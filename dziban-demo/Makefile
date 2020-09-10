@@ -1,11 +1,25 @@
-.PHONY: init clean clone draco dziban nb remove
+.PHONY: init clean clone draco dziban nb new_env remove_env
 
 CONDA_BASE=$(shell conda info --base)
 
-init: new_env 
+init: clean new_env draco dziban enable_vega_nbextension
+
+clean: clean_draco clean_dziban
+
+draco: clone_draco draco_fe draco_py draco_local_py
+
+dziban: clone_dziban dziban_py dziban_local_py
     
 new_env:
-	conda create --name dzyban-demo python=3.6
+	conda create --yes --name dziban-demo python=3.6
+
+remove_env: clean
+	conda remove -n dziban-demo --all
+
+nb:
+	jupyter notebook
+
+clone: clone_draco clone_dziban
 
 clone_draco:
 	git clone --single-branch --branch multi-vis https://github.com/uwdata/draco.git
@@ -15,9 +29,9 @@ clone_dziban:
 
 draco_fe:
 	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
-	conda activate dzyban-demo && \
+	conda activate dziban-demo && \
 	cd draco && \
-	conda install -c potassco clingo && \
+	conda install --yes -c potassco clingo && \
 	yarn install && \
 	cd js && \
 	yarn install && \
@@ -26,7 +40,7 @@ draco_fe:
 
 draco_py:
 	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
-	conda activate dzyban-demo && \
+	conda activate dziban-demo && \
 	cd draco && \
 	while read requirement; do \
         conda install --yes $$requirement || pip install $$requirement; \
@@ -34,7 +48,7 @@ draco_py:
 
 dziban_py:
 	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
-	conda activate dzyban-demo && \
+	conda activate dziban-demo && \
 	cd dziban && \
 	while read requirement; do \
         conda install --yes $$requirement || pip install $$requirement; \
@@ -42,18 +56,15 @@ dziban_py:
 
 draco_local_py:
 	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
-	conda activate dzyban-demo && \
+	conda activate dziban-demo && \
 	cd draco && \
 	pip install -e .
 
 dziban_local_py:
 	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
-	conda activate dzyban-demo && \
+	conda activate dziban-demo && \
 	cd dziban && \
 	pip install -e .
-
-remove_env: clean
-	conda remove -n dzyban-demo --all
 
 clean_draco:
 	rm -rf draco
@@ -61,13 +72,8 @@ clean_draco:
 clean_dziban:
 	rm -rf dziban
 
-nb:
-	jupyter notebook
-
-draco: clean_draco clone_draco draco_fe draco_py draco_local_py
-
-dziban: clean_dziban clone_dziban dziban_py dziban_local_py
-
-clean: clean_draco clean_dziban
-
-clone: clone_draco clone_dziban
+enable_vega_nbextension:
+	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
+	conda activate dziban-demo && \
+	jupyter nbextension install --py vega --sys-prefix && \
+	jupyter nbextension enable --py vega --sys-prefix

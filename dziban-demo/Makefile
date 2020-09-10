@@ -17,6 +17,8 @@ remove_env: clean
 	conda remove -n dziban-demo --all
 
 nb:
+	source $(CONDA_BASE)/etc/profile.d/conda.sh && \
+	conda activate dziban-demo && \
 	jupyter notebook
 
 clone: clone_draco clone_dziban

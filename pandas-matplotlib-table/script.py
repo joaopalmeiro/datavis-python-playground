@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def render_mpl_table(
+def mpl_table(
     data,
     col_width=3.0,
     row_height=0.625,
@@ -11,6 +11,7 @@ def render_mpl_table(
     font_size=14,
     edge_color="w",
     header_color="#44475a",
+    font_color="#44475a",
     row_colors=["#f5f5f5", "w"],
     header_columns=0,
     **kwargs,
@@ -30,6 +31,7 @@ def render_mpl_table(
 
     for k, cell in mpl_table.get_celld().items():
         cell.set_edgecolor(edge_color)
+        cell.get_text().set_color(font_color)
 
         if k[0] == 0 or k[1] < header_columns:
             cell.set_text_props(weight="bold", color="w")
@@ -43,6 +45,6 @@ def render_mpl_table(
 if __name__ == "__main__":
     data = pd.DataFrame(np.random.randint(0, 100, size=(20, 5)), columns=list("ABCDE"))
 
-    table = render_mpl_table(data)
+    table = mpl_table(data)
 
     table.savefig("table.png", dpi=300, bbox_inches="tight")

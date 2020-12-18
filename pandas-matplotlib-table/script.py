@@ -28,7 +28,7 @@ def render_mpl_table(
     mpl_table.auto_set_font_size(False)
     mpl_table.set_fontsize(font_size)
 
-    for k, cell in mpl_table._cells.items():
+    for k, cell in mpl_table.get_celld().items():
         cell.set_edgecolor(edge_color)
 
         if k[0] == 0 or k[1] < header_columns:

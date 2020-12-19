@@ -1,6 +1,10 @@
 # pandas-matplotlib-table
 
-Generate an image of a pandas DataFrame (table) using Matplotlib.
+Generate an image of a [pandas](https://pandas.pydata.org/) DataFrame (table) using [Matplotlib](https://matplotlib.org/).
+
+## Example
+
+![Table image with random values](table.png)
 
 ## References
 

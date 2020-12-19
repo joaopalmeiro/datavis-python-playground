@@ -13,3 +13,4 @@ Generate sparkbars using Unicode characters.
 - [fastcore](https://fastcore.fast.ai/).
 - [Zach Holman's spark](https://github.com/holman/spark).
 - [Block Elements](https://en.wikipedia.org/wiki/Block_Elements).
+- [Rosetta Code: Sparkline in unicode](https://rosettacode.org/wiki/Sparkline_in_unicode).

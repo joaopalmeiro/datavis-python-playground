@@ -1,0 +1,21 @@
+"Age, years",Gender,Field of research,Color,Media presence,Policy-making engagement
+35-39,Female,Biotechnology,red,Medium,Low
+40-44,Male,Nanotechnology,,Medium,High
+40-44,Female,Nanotechnology,,Medium,Low
+45-49,Female,Biotechnology,red,Low,Low
+45-49,Male,Biotechnology,red,Medium,High
+50-54,Female,Biotechnology,green,Medium,Medium
+50-54,Male,Nanotechnology,,Low,Low
+50-54,Male,Nanotechnology,,Medium,High
+50-54,Male,Biotechnology,red,High,Medium
+50-54,Male,Biotechnology,red,Medium,Medium
+55-59,Female,Nanotechnology,,Medium,Low
+55-59,Male,Biotechnology,red,High,Medium
+55-59,Male,Nanotechnology,,Low,Low
+55-59,Male,Nanotechnology,,High,High
+60-64,Male,Biotechnology,red,High,Low
+60-64,Female,Biotechnology,green,High,High
+60-64,Male,Biotechnology,green,High,High
+>65,Male,Nanotechnology,,High,High
+Undisclosed,Male,Biotechnology,red,Medium,Medium
+Undisclosed,Male,Biotechnology,red,Medium,Medium

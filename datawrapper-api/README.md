@@ -1,5 +1,9 @@
 # Datawrapper API
 
+## Notes
+
+- In order to check the metadata available for each type of chart, go to: `https://api.datawrapper.de/v3/charts/<ID>`.
+
 ## References
 
 - Horst, M. (2013). A Field of Expertise, the Organization, or Science Itself? Scientists’ Perception of Representing Research in Public Communication. _Science Communication, 35_(6), 758–779. https://doi.org/10.1177/1075547013487513.

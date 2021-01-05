@@ -147,3 +147,39 @@ if __name__ == "__main__":
     #     border_width=0,
     #     zoom=8,
     # )
+
+    # Research field
+    # chart_info = dw.create_chart(
+    #     title="Research field of the interviewed scientists",
+    #     chart_type=PIE_CHART,
+    #     data=prepare_column(data, "Field of research"),
+    # )
+    # dw.update_description(
+    #     chart_info["id"],
+    #     source_name="Horst, 2013",
+    #     source_url="https://doi.org/10.1177/1075547013487513",
+    # )
+    # properties = {
+    #     "visualize": {
+    #         "custom-colors": {"Biotechnology": 0, "Nanotechnology": 1},
+    #         "inside_labels": {"enabled": False},
+    #         "color_key": {
+    #             "stack": False,
+    #             "enabled": False,
+    #             "position": "top",
+    #             "label_values": True,
+    #         },
+    #         "pie_size": {"inside_labels": 50, "outside_labels": 25},
+    #         "outside_labels": {"edge": False, "color": True, "enabled": True},
+    #     }
+    # }
+    # dw.update_metadata(chart_info["id"], properties)
+    # dw.publish_chart(chart_info["id"], display=False)
+    # dw.export_chart(
+    #     chart_info["id"],
+    #     output="png",
+    #     filepath="img/research_field.png",
+    #     display=False,
+    #     border_width=0,
+    #     zoom=10,
+    # )

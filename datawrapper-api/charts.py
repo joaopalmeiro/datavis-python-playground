@@ -1,6 +1,8 @@
 import os
+from pathlib import Path
 
 import pandas as pd
+import requests as r
 from datawrapper import Datawrapper
 from dotenv import load_dotenv
 
@@ -8,6 +10,58 @@ PIE_CHART = "d3-pies"
 
 PURPLE = "#8624F5"
 GREEN = "#1FC3AA"
+
+
+def export_chart_patched(
+    self,
+    chart_id,
+    unit="px",
+    mode="rgb",
+    width=None,
+    plain=False,
+    scale=1,
+    border_width=20,
+    zoom=2,
+    output="png",
+    filepath="./image.png",
+    display=False,
+):
+    _export_url = f"{self._CHARTS_URL}/{chart_id}/export/{output}"
+    _filepath = Path(filepath)
+    _filepath = _filepath.with_suffix(f".{output}")
+
+    plain = "true" if plain else "false"
+    querystring = {
+        "unit": unit,
+        "mode": mode,
+        "width": width,
+        "plain": plain,
+        "scale": scale,
+        "borderWidth": border_width,
+        "zoom": zoom,
+    }
+
+    _header = self._auth_header
+    _header["accept"] = "*/*"
+
+    export_chart_response = r.get(url=_export_url, headers=_header, params=querystring)
+
+    if export_chart_response.status_code == 200:
+        with open(_filepath, "wb") as response:
+            response.write(export_chart_response.content)
+        if display:
+            return Image(_filepath)
+        else:
+            print(f"File exported at {_filepath}")
+    elif export_chart_response.status_code == 403:
+        print("You don't have access to the requested code.")
+    elif export_chart_response.status_code == 401:
+        print("You couldn't be authenticated.")
+    else:
+        print("Couldn't export at this time.")
+
+
+Datawrapper.export_chart = export_chart_patched
 
 
 def prepare_column(df, col):
@@ -55,5 +109,5 @@ if __name__ == "__main__":
         filepath="img/gender.png",
         display=False,
         border_width=0,
-        scale=4,
+        zoom=10,
     )

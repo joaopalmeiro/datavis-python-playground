@@ -30,10 +30,23 @@ if __name__ == "__main__":
     )
     dw.update_description(
         chart_info["id"],
-        source_name="Horst, M. (2013). A Field of Expertise, the Organization, or Science Itself? Scientists’ Perception of Representing Research in Public Communication. <i>Science Communication</i>, 35(6), 758–779.<br><br>",
+        source_name="Horst, 2013",
         source_url="https://doi.org/10.1177/1075547013487513",
     )
-    properties = {"visualize": {"custom-colors": {"Male": GREEN, "Female": PURPLE},}}
+    properties = {
+        "visualize": {
+            "custom-colors": {"Male": GREEN, "Female": PURPLE},
+            "inside_labels": {"enabled": False},
+            "color_key": {
+                "stack": False,
+                "enabled": False,
+                "position": "top",
+                "label_values": True,
+            },
+            "pie_size": {"inside_labels": 50, "outside_labels": 25},
+            "outside_labels": {"edge": False, "color": True, "enabled": True},
+        }
+    }
     dw.update_metadata(chart_info["id"], properties)
     dw.publish_chart(chart_info["id"], display=False)
     dw.export_chart(
@@ -41,6 +54,6 @@ if __name__ == "__main__":
         output="png",
         filepath="img/gender.png",
         display=False,
-        scale=4,
         border_width=0,
+        scale=4,
     )

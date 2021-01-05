@@ -208,8 +208,6 @@ if __name__ == "__main__":
     )
     media_policy_data = media_policy_data.sort_values(by="category")
 
-    print(media_policy_data)
-
     chart_info = dw.create_chart(
         title="Level of public communication of the interviewed scientists",
         chart_type=SM_PIE_CHART,
@@ -232,6 +230,7 @@ if __name__ == "__main__":
                 "position": "top",
                 "label_values": False,
             },
+            "custom-colors": {"Low": "#549EDE", "High": "#00528C", "Medium": 0},
             "pie_size": {"inside_labels": 50, "outside_labels": 50},
             "slice_order": "original",
         },

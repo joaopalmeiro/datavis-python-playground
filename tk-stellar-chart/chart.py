@@ -79,7 +79,7 @@ class SpiderChart(tk.Canvas):
 
 class StellarChart(SpiderChart):
     def draw_polygon(self):
-        da = math.pi / self.num_pts
+        da = math.pi / self.num_pts  # To be between labels
         b = 0.05 * self.scale
 
         points = []

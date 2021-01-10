@@ -98,3 +98,28 @@ def stellar_chart(data, cat_var, ymax, dpi=100, color="tab:blue", save_fig=False
         plt.savefig(
             "stellar_chart.png", dpi=300, bbox_inches="tight", facecolor="white"
         )
+
+
+def radar_chart(data, cat_var, ymax, dpi=100, color="tab:blue", save_fig=False):
+    categories, values = prepare_data(data, cat_var)
+    N = len(categories)
+
+    angles = prepare_angles(N)
+
+    fig = plt.figure(dpi=dpi)
+    ax = fig.add_subplot(111, polar=True)
+    draw_peripherals(ax, categories, angles, ymax)
+
+    ax.plot(
+        angles,
+        values,
+        linewidth=1,
+        linestyle="solid",
+        solid_joinstyle="round",
+        color=color,
+    )
+
+    ax.fill(angles, values, color, alpha=0.1)
+
+    if save_fig:
+        plt.savefig("radar_chart.png", dpi=300, bbox_inches="tight", facecolor="white")

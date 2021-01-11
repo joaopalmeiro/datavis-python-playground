@@ -6,7 +6,7 @@ An example of a confusion matrix in which each quadrant contains a histogram wit
 
 - `pipenv install --python 3.8`.
 - `pipenv shell`.
-- `pipenv run jupyter notebook chart.ipynb`.
+- `pipenv run jupyter notebook demo.ipynb`.
 
 ## References
 

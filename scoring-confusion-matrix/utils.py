@@ -15,5 +15,7 @@ def prepare_titanic_data(data):
     median_age = data["Age"].dropna().median()
     data["age_imputed"] = data["Age"].fillna(median_age)
 
-    return data
+    return data[
+        ["Survived", "Pclass", "is_female", "sibsp_parch", "Fare", "age_imputed"]
+    ]
 

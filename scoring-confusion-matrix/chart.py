@@ -36,15 +36,24 @@ def scoring_confusion_matrix(
     binning = alt.Bin(step=0.1)
     base = alt.Chart(data, width=width, height=height)
 
-    hist = base.mark_bar().encode(
-        x=alt.X(f"{xvar}:Q", bin=binning, axis=alt.Axis(format="~", title="Score")),
-        y=alt.Y("count():Q", axis=alt.Axis(title="Count")),
-        facet=alt.Facet(
-            f"{CONFUSION_CATEGORIES_COL_NAME}:O",
-            sort=CONFUSION_CATEGORIES,
-            title=f"Threshold: {threshold}",
-            columns=2,
-        ),
+    # It is necessary to use transforms, so that the facet is sorted as intended,
+    # because of this bug: https://github.com/altair-viz/altair/issues/2303.
+    hist = (
+        base.mark_bar()
+        .encode(
+            x=alt.X(f"binned_{xvar}:O", axis=alt.Axis(format="~", title="Score")),
+            y=alt.Y("y_count:Q", axis=alt.Axis(title="Count")),
+            facet=alt.Facet(
+                f"{CONFUSION_CATEGORIES_COL_NAME}:O",
+                sort=CONFUSION_CATEGORIES,
+                title=f"Threshold: {threshold}",
+                columns=2,
+            ),
+        )
+        .transform_bin(f"binned_{xvar}", xvar, bin=binning)
+        .transform_aggregate(
+            y_count="count()", groupby=[f"binned_{xvar}", CONFUSION_CATEGORIES_COL_NAME]
+        )
     )
 
     return hist

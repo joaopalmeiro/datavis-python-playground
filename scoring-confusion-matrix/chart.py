@@ -57,7 +57,17 @@ def scoring_confusion_matrix(
     confusion_categories_with_counts = data[CONFUSION_CATEGORIES_COL_NAME].unique()
 
     binning = alt.Bin(step=bin_width)
-    base = alt.Chart(data, width=width, height=height)
+    base = alt.Chart(
+        data,
+        width=width,
+        height=height,
+        usermeta={
+            "embedOptions": {
+                "scaleFactor": 5,
+                "downloadFileName": "scoring_confusion_matrix",
+            }
+        },
+    )
 
     # It is necessary to use transforms, so that the faceted chart is sorted as intended.
     # More info: https://github.com/altair-viz/altair/issues/2303.

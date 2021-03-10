@@ -1,4 +1,6 @@
-from typing import Optional, Sequence, Tuple
+import math
+import re
+from typing import Optional, Sequence, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -65,3 +67,40 @@ def compute_confusion_categories(
     )
 
     return agg_data
+
+
+def millify(n: Union[float, str]) -> str:
+    # Based on:
+    # - https://github.com/azaitsev/millify.
+    # - https://en.wikipedia.org/wiki/Order_of_magnitude.
+    # - https://stackoverflow.com/a/3155023.
+    # - https://github.com/d3/d3-format.
+
+    millnames = ["", "k", "M", "G", "T", "P", "E", "Z", "Y"]
+    # "k" -> order of magnitude: 3; index: 1
+    # "M" -> order of magnitude: 6; index: 2
+
+    n = float(n)
+
+    millidx = max(
+        0,
+        min(
+            len(millnames) - 1, int(math.floor(0 if n == 0 else math.log10(abs(n)) / 3))
+        ),
+    )
+
+    coefficient = n / (10 ** (3 * millidx))
+
+    return f"{coefficient:g}{millnames[millidx]}"
+
+
+def humanize_title(word):
+    # Based on: https://inflection.readthedocs.io/en/latest/
+
+    word = re.sub(r"_id$", "", word)
+    word = word.replace("_", " ")
+    # (?i) == re.IGNORECASE
+    word = re.sub(r"(?i)([a-z\d]*)", lambda m: m.group(1).lower(), word)
+    word = re.sub(r"\b(\w)", lambda m: m.group(0).upper(), word)
+
+    return word

@@ -67,3 +67,87 @@ def compute_confusion_categories(
     )
 
     return agg_data
+
+
+# More info: https://numpy.org/devdocs/reference/typing.html
+# import numpy.typing as npt
+# npt.ArrayLike
+def trunc(values: pd.Series, decs: int = 0) -> pd.Series:
+    return np.trunc(values * 10 ** decs) / (10 ** decs)
+
+
+def get_order_of_magnitude(number: int) -> int:
+    return int(math.log10(number))
+
+
+def compute_bins(
+    data: pd.DataFrame, xvar: str, target_var: str, nbins: int = 10
+) -> pd.DataFrame:
+    decimal_places = get_order_of_magnitude(nbins)
+
+    nbins += 1
+    bins = np.linspace(0.0, 1.0, nbins)
+
+    # binned = data.groupby(
+    #     [target_var, pd.cut(data[xvar], bins=bins, right=False)]
+    # ).count()
+
+    binned = data.copy()
+    binned["trunc_score_count"] = trunc(binned[xvar], decs=decimal_places)
+
+    binned = binned.groupby([target_var, "trunc_score_count"])[
+        ["trunc_score_count"]
+    ].count()
+
+    binned = (
+        binned.reset_index(level=target_var)
+        .rename_axis("bin_min")
+        .reset_index(drop=False)
+    )
+
+    full_binned = pd.DataFrame(
+        {
+            target_var: np.repeat(binned[target_var].unique(), nbins - 1),
+            "bin_min": np.tile(bins[:-1], 2),
+        }
+    )
+
+    binned["bin_min"] = binned["bin_min"].round(decimal_places)
+    full_binned["bin_min"] = full_binned["bin_min"].round(decimal_places)
+
+    full_binned = full_binned.merge(
+        binned, how="left", on=[target_var, "bin_min"]
+    ).fillna(0)
+
+    full_binned["trunc_score_count"] = full_binned["trunc_score_count"].astype("int32")
+
+    full_binned["bin_max"] = np.tile(bins[1:], 2)
+
+    return full_binned
+
+
+def prepara_bin_edges_for_silhouette_line(
+    data: pd.DataFrame, target_var: str, value: int
+) -> pd.DataFrame:
+    # shifted_data = data.copy()
+    # shifted_data["bin_min"] = shifted_data["bin_min"] + 0.1
+
+    # return (
+    #     pd.concat([data, shifted_data], ignore_index=True)
+    #     .rename(columns={"bin_min": "bin"})
+    #     .drop(columns=["bin_max"])
+    # )
+
+    silhouette_data = data.query(f"{target_var} == {value}")
+
+    last_row = (
+        silhouette_data.tail(1)
+        .rename(columns={"bin_max": "bin"})
+        .drop(columns=["bin_min"])
+    )
+
+    silhouette_data = silhouette_data.rename(columns={"bin_min": "bin"}).drop(
+        columns=["bin_max"]
+    )
+
+    return pd.concat([silhouette_data, last_row], ignore_index=True)

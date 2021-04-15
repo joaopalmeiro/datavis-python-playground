@@ -10,6 +10,7 @@ altair = "*"
 scikit-learn = "*"
 
 [dev-packages]
+safety = "*"
 
 [requires]
 python_version = "3.8"

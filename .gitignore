@@ -128,7 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.vscode/
+# Custom
 formatter.py
 dziban-demo/draco/
 dziban-demo/dziban/
+uml-class-diagram-pyreverse/.vscode/settings.json

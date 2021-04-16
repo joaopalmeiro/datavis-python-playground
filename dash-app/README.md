@@ -15,3 +15,4 @@
 
 - Dash = Flask + React + Plotly.
 - Use _mixedCase_ syntax (instead of hyphen-separated words) when specifying CSS properties in the `style` argument (`backgroundColor` instead of `backgroud-color`, for example).
+- Dash's interactivity is based on a reactive programming paradigm.

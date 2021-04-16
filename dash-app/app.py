@@ -22,6 +22,9 @@ external_stylesheets = [
 ]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+# Deployment
+# server = app.server
+
 app.title = "Avocado Analytics: Understand Your Avocados!"
 
 # App Layout
@@ -51,7 +54,9 @@ app.layout = html.Div(
                                 {"label": region, "value": region}
                                 for region in np.sort(data.region.unique())
                             ],
+                            # Default value
                             value="Albany",
+                            # Allow the user to leave this field empty if True
                             clearable=False,
                             className="dropdown",
                         ),
@@ -66,7 +71,9 @@ app.layout = html.Div(
                                 {"label": avocado_type, "value": avocado_type}
                                 for avocado_type in data.type.unique()
                             ],
+                            # Default value
                             value="organic",
+                            # Allow the user to leave this field empty if True
                             clearable=False,
                             searchable=False,
                             className="dropdown",

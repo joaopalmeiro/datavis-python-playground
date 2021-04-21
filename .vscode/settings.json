@@ -1,3 +1,14 @@
 {
-  "colorize.languages": ["python"]
+  "colorize.languages": ["python"],
+  "better-comments.tags": [
+    {
+      "tag": "*",
+      "color": "#FF9AC1",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    }
+  ]
 }

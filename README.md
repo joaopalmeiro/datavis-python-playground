@@ -13,3 +13,12 @@ Some Data Visualization experiments with Python.
 - [Manifold demo](manifold-demo).
 - [Marching Squares demo](marching-squares-demo).
 - [Style a UML class diagram generated with Pyreverse](uml-class-diagram-pyreverse).
+
+## Notes
+
+- [Panda Theme](https://marketplace.visualstudio.com/items?itemName=tinkertrain.theme-panda):
+  - [Colors](https://github.com/tinkertrain/panda-syntax-vscode/blob/master/themes/colors.yaml).
+  - [Color semantics](https://github.com/tinkertrain/panda-syntax-vscode/blob/master/Color%20Semantics.md):
+    - _Pink: Logic Control_ (`#FF75B5`).
+    - _Light Pink: Object access_ (`#FF9AC1`).
+- [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.

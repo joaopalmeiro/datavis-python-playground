@@ -5,14 +5,14 @@ import numpy as np
 import pandas as pd
 from dash.dependencies import Input, Output
 
-# Data
+# * Data
 data = pd.read_csv("avocado.csv")
 # data = data.query("type == 'conventional' and region == 'Albany'")
 
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
 
-# App
+# * App
 external_stylesheets = [
     {
         # Font: https://fonts.google.com/specimen/Lato
@@ -22,12 +22,12 @@ external_stylesheets = [
 ]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-# Deployment
+# * Deployment
 # server = app.server
 
 app.title = "Avocado Analytics: Understand Your Avocados!"
 
-# App Layout
+# * App Layout
 app.layout = html.Div(
     children=[
         html.Div(
@@ -115,7 +115,7 @@ app.layout = html.Div(
     ]
 )
 
-# Charts
+# * Charts
 @app.callback(
     [Output("price-chart", "figure"), Output("volume-chart", "figure")],
     [

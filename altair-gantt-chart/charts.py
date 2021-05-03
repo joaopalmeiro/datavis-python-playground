@@ -5,12 +5,10 @@ import pandas as pd
 
 from utils import compute_size_with_aspect_ratio, split_rows_with_marker
 
+
 # Colors:
 # - https://colors.eva.design/
 # - https://akveo.github.io/nebular/docs/design-system/dark-theme
-BLACK_COLOR: str = "#222b45"  # color-basic-800
-
-
 def gantt_chart(
     data: pd.DataFrame,
     xstart_var: str,
@@ -20,6 +18,7 @@ def gantt_chart(
     marker: Optional[pd.DataFrame] = None,
     color: str = "#3366ff",  # color-primary-500
     deemphasis_color: str = "#a6c1ff",  # color-primary-300
+    black_color: str = "#222b45",  # color-basic-800
 ) -> Union[alt.Chart, alt.LayerChart]:
     height = compute_size_with_aspect_ratio(width)
 
@@ -34,9 +33,9 @@ def gantt_chart(
                 axis=alt.Axis(
                     grid=False,
                     title=None,
-                    tickColor=BLACK_COLOR,
-                    labelColor=BLACK_COLOR,
-                    domainColor=BLACK_COLOR,
+                    tickColor=black_color,
+                    labelColor=black_color,
+                    domainColor=black_color,
                 ),
                 # More info: https://altair-viz.github.io/user_guide/generated/core/altair.Scale.html
                 scale=alt.Scale(nice={"interval": "week", "step": 2}),
@@ -51,7 +50,7 @@ def gantt_chart(
                     domain=False,
                     ticks=True,
                     title=None,
-                    labelColor=BLACK_COLOR,
+                    labelColor=black_color,
                     gridColor="#e4e9f2",  # color-basic-400
                 ),
             ),
@@ -78,7 +77,7 @@ def gantt_chart(
             baseline="bottom",
             dy=-height / 2 - 3,
             tooltip=False,
-            color=BLACK_COLOR,
+            color=black_color,
         ).encode(text="message:N")
 
         gantt = alt.layer(gantt, vrule, text)

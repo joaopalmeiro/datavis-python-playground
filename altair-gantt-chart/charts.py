@@ -3,7 +3,7 @@ from typing import Optional, Union
 import altair as alt
 import pandas as pd
 
-from utils import compute_size_with_aspect_ratio
+from utils import compute_size_with_aspect_ratio, split_rows_with_marker
 
 
 def gantt_chart(
@@ -15,6 +15,8 @@ def gantt_chart(
     marker: Optional[pd.DataFrame] = None,
 ) -> Union[alt.Chart, alt.LayerChart]:
     height = compute_size_with_aspect_ratio(width)
+
+    data = split_rows_with_marker(data, xstart_var, xend_var, marker)
 
     gantt = (
         alt.Chart(data, width=width, height=height)
@@ -31,6 +33,14 @@ def gantt_chart(
     )
 
     if marker is not None:
+        gantt = gantt.encode(
+            color=alt.condition(
+                alt.datum[xend_var] <= alt.expr.time(marker["date"].item()),
+                alt.value("blue"),
+                alt.value("gray"),
+            )
+        )
+
         base_marker = alt.Chart(marker).encode(x="date:T")
 
         vrule = base_marker.mark_rule(

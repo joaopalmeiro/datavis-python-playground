@@ -38,6 +38,9 @@ def gantt_chart(
                     labelColor=BLACK_COLOR,
                     domainColor=BLACK_COLOR,
                 ),
+                # More info: https://altair-viz.github.io/user_guide/generated/core/altair.Scale.html
+                scale=alt.Scale(nice={"interval": "week", "step": 2}),
+                # scale=alt.Scale(nice="month"),
             ),
             x2=alt.X2(f"{xend_var}:T"),
             y=alt.Y(
@@ -80,4 +83,12 @@ def gantt_chart(
 
         gantt = alt.layer(gantt, vrule, text)
 
-    return gantt.configure_view(strokeWidth=0).configure_axisY(tickColor="transparent")
+    return (
+        gantt.properties(
+            usermeta={
+                "embedOptions": {"downloadFileName": "gantt_chart", "scaleFactor": 5}
+            }
+        )
+        .configure_view(strokeWidth=0)
+        .configure_axisY(tickColor="transparent")
+    )

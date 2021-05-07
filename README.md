@@ -22,3 +22,4 @@ Some Data Visualization experiments with Python.
     - _Pink: Logic Control_ (`#FF75B5`).
     - _Light Pink: Object access_ (`#FF9AC1`).
 - [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.
+- [Mark Text](https://github.com/marktext/marktext) (Markdown editor).

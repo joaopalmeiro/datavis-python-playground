@@ -134,3 +134,6 @@ dziban-demo/draco/
 dziban-demo/dziban/
 uml-class-diagram-pyreverse/.vscode/settings.json
 altair-gantt-chart/demo-Copy1.ipynb
+weight/credentials.json
+weight/data/
+weight/token.json

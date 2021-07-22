@@ -23,3 +23,6 @@ Some Data Visualization experiments with Python.
     - _Light Pink: Object access_ (`#FF9AC1`).
 - [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.
 - [Mark Text](https://github.com/marktext/marktext) (Markdown editor).
+- [conda](https://github.com/conda/conda):
+  - [CLI documentation](https://conda.io/projects/conda/en/latest/commands.html).
+  - If an environment does not have a name (`-n, --name`), it is possible to delete it through its full path (`-p, --prefix`): `conda env remove -p </Users/joao.palmeiro/Documents/project>` ([source](https://stackoverflow.com/a/56780333) and [`conda remove` documentation](https://conda.io/projects/conda/en/latest/commands/remove.html)).
